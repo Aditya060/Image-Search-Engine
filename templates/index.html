@@ -1,30 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy and Cool Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: hsl(295, 38%, 82%);
+            font-family: Arial, sans-serif;
+            color: #333;
+            
+        }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #bf87cd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #442c2c;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 10px 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #555;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+
+        figure {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        figcaption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
 <body>
-    <div class = "container">
+    <div class="container">
         <h1>Image-Search</h1>
         <form method="POST" enctype="multipart/form-data">
-            <input type="file" name="query_img"><br>
-            <input type = "submit">
+            <input type="file" name="query_img" class="form-control">
+            <input type="submit" class="btn btn-primary" value="Upload">
         </form>
+
         <h2>Query</h2>
         {% if query_path %}
-        <img src = "{{ query_path }}" widhth = "300 px">
+        <img src="{{ query_path }}" width="300px" class="img-responsive">
         {% endif %}
 
-        <h2>Results: </h2>
+        <h2>Results:</h2>
         {% for score in scores %}
-        <figure style = "float: left; margin-right: 20px; margin-bottom: 20px;">
-            <img src = "{{ score[1] }}" height = "200px">
+        <figure>
+            <img src="{{ score[1] }}" height="200px" class="img-responsive">
             <figcaption>{{ score[0] }}</figcaption>
         </figure>
         {% endfor %}
     </div>
-    
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
